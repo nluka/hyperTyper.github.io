@@ -1,0 +1,20 @@
+select {
+  background-color: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-primary);
+  border-radius: 5px;
+  color: var(--font-color-tertiary);
+  font-size: 85%;
+  height: 70%;
+  padding: 2px;
+  /* position: absolute; */
+  right: 8px;
+  width: fit-content;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select option {
+  cursor: pointer;
+}

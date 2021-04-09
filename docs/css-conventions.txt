@@ -1,0 +1,19 @@
+The following are the style conventions for all CSS3 code in this project.
+///////////////////////////////////////////////////////////////////////////////
+
+1. Standard properties within a selector should always appear in alphabetical
+order. Vendor prefixes should follow the standard properties they relate to.
+
+  for example:
+
+  .some-element {
+    align-items: center;
+    appearance: none;
+    -webkit-appearance: none
+    display: flex;
+    justify-content: center;
+  }
+
+2. Selectors should appear in order that their HTML elements appear on the page,
+from top to bottom, and left to right. Pseudo-selectors should be grouped with
+their non-psuedo counterpart.

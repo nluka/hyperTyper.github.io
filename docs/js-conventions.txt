@@ -1,0 +1,25 @@
+The following are the style conventions for all JS code in this project.
+///////////////////////////////////////////////////////////////////////////////
+
+1. Any global variables that reference HTML elements should mention what
+element type they hold at the end of their name, separated by an underscore.
+Any local variables that mention HTML elements should mention what element type
+they hold at the end of their name, in camelCase
+
+  e.g, global variables:
+  let somePanel_div;
+  let html_body;
+  let phraseList_buttons (this is an example of an array of elements)
+
+  e.g, local variables:
+  const someSpan;
+  let someDiv;
+
+2. In places where tracking the type of data a variable holds is relevant,
+variable names should indicate the type of data they will hold; at the end of
+their name, separated by an underscore.
+
+  for example:
+
+  const stringifiedSoundVolume = localStorage.getItem("soundVolume");
+  const soundVolumeFloat = parseFloat(stringifiedSoundVolume);

@@ -1,0 +1,52 @@
+#mistakeAnalyzerDiv {
+  background-color: var(--bg-color-content-panel);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid var(--border-color-secondary);
+}
+
+#analyzedExpressionDiv {
+  border-bottom: 1px solid var(--border-color-secondary);
+  color: var(--font-color-tertiary);
+  font-family: var(--font-family-monospace);
+  font-size: calc(var(--base-font-size) * 1.5);
+  padding: calc(var(--base-spacing) * 1.25) calc(var(--base-spacing) * 1.5);
+  user-select: none;
+  white-space: pre-wrap;
+}
+
+#analyzedExpressionDiv span {
+  border: 0.1px solid var(--bg-color-content-panel);
+  /* border-left: 0.1px solid var(--bg-color-content-panel);
+  border-right: 0.1px solid var(--bg-color-content-panel); */
+}
+
+#analyzedExpressionDiv span.cursor {
+  border: 0.1px solid var(--font-color-primary);
+}
+
+#characterAnalysisDiv {
+  color: var(--font-color-tertiary);
+  font-family: var(--font-family-monospace);
+  font-size: calc(var(--base-font-size) * 1.25);
+  padding: calc(var(--base-spacing) * 1.25) calc(var(--base-spacing) * 1.5);
+  /* margin-bottom: calc(var(--base-spacing) * 1.25); */
+}
+
+[data-mistake-count] {
+  border: 0.1px solid var(--bg-color-content-panel);
+  color: var(--font-color-primary);
+  cursor: pointer;
+}
+
+[data-mistake-count="1"] {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+[data-mistake-count="2"] {
+  background-color: rgba(255, 0, 0, 0.6);
+}
+
+[data-mistake-count="3"], [data-mistake-count=">3"] {
+  background-color: rgba(255, 0, 0, 0.99);
+}

@@ -1,0 +1,6 @@
+.feedback-form-disclaimer-panel {
+  background-color: transparent;
+  border: none;
+  color: var(--font-color-tertiary);
+  font-size: calc(var(--base-font-size) * 1.3);
+}

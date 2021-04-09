@@ -1,0 +1,8 @@
+The following are the style conventions for all code files in this project.
+///////////////////////////////////////////////////////////////////////////////
+
+1. Always use 2 real-spaces for indentation. Never use tabs.
+
+2. Ensure trailing-whitespace is trimmed, editor should be configured to do so.
+
+3. Add comments as a last resort for when code cannot be made self explanatory.

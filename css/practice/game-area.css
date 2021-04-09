@@ -1,0 +1,190 @@
+:root {
+  --cursor-background-color: none; /* rgba(255, 255, 255, 0.05); */
+  --cursor-border-bottom: none; /* 0.1px solid var(--font-color-quinary); */
+  --cursor-border-left: 1px solid var(--font-color-primary);
+}
+
+.game-header-panel {
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  justify-content: space-between;
+  margin-bottom: calc(var(--base-spacing) * 1);
+}
+
+.game-info-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+#gameTimerDiv {
+  align-items: center;
+  border-right: 1px solid rgb(60, 60, 60);
+  display: flex;
+  justify-content: center;
+  padding: 0 calc(var(--base-spacing) * 1);
+  /* calc(var(--base-spacing) * 0.5) */
+  min-height: 35px;
+  /* min-width: 60px; */
+}
+
+#gameWpmTrackerDiv {
+  padding: calc(var(--base-spacing) * 0.5) calc(var(--base-spacing) * 1);
+  padding-right: 0;
+}
+
+#gameTimerDiv,
+#gameWpmTrackerDiv {
+  align-items: center;
+  color: var(--font-color-secondary);
+  display: flex;
+  font-family: var(--font-family-primary);
+  font-size: calc(var(--base-font-size) * 1);
+  height: fit-content;
+  user-select: none;
+  width: fit-content;
+}
+
+#gameActionButton {
+  align-items: center;
+  background-color: var(--green-dark);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: var(--font-color-primary);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-family-primary);
+  justify-content: center;
+  opacity: 0.9;
+  transition: background-color 0.1s;
+  -webkit-transition: background-color 0.1s;
+  -moz-transition: background-color 0.1s;
+  -ms-transition: background-color 0.1s;
+  -o-transition: background-color 0.1s;
+  user-select: none;
+}
+
+#gameActionButton:not(:disabled):hover {
+  background-color: var(--green-medium);
+}
+
+#gameActionButton:disabled {
+  /* border-color: var(--border-color-primary); */
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.game-panel {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+#expressionDiv {
+  background-color: var(--bg-color-content-panel);
+  height: fit-content;
+  margin-bottom: calc(var(--base-spacing) * 1);
+  padding: calc(var(--base-spacing) * 1.25) calc(var(--base-spacing) * 1.5);
+  white-space: pre-wrap;
+}
+
+#expressionDiv.error {
+  color: rgb(255, 20, 0);
+}
+
+#expressionDiv span {
+  border: 0.1px solid var(--bg-color-content-panel);
+  /* border-left: 0.1px solid var(--bg-color-content-panel);
+  border-right: 0.1px solid var(--bg-color-content-panel); */
+}
+
+#expressionDiv span.cursor {
+  animation: blink 1s linear 0.5s infinite normal none;
+  background-color: var(--cursor-background-color);
+  border-bottom: var(--cursor-border-bottom);
+  border-left: var(--cursor-border-left);
+}
+
+@keyframes blink {
+  0% {
+    border-left-color: var(--font-color-primary);
+  }
+  49% {
+    border-left-color: var(--font-color-primary);
+  }
+  50% {
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+  }
+}
+
+#expressionDiv span.correct {
+  color: var(--green-light);
+}
+
+#expressionDiv span:is(.incorrect-non-whitespace, .incorrect-whitespace) {
+  background-color: rgba(255, 20, 0, 0.4);
+}
+
+#gameInput {
+  background-color: var(--bg-color-content-panel);
+  caret-color: transparent;
+  height: auto;
+  padding: calc(var(--base-spacing) * 0.5);
+  text-align: center;
+}
+
+#gameInput:focus {
+  border-color: var(--border-color-primary);
+}
+
+#gameInput.player-input-incorrect {
+  background-color: rgba(255, 20, 0, 0.3);
+}
+
+#expressionDiv,
+#gameInput {
+  border: 1px solid var(--border-color-secondary);
+  border-radius: 5px;
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-monospace);
+  font-size: calc(var(--base-font-size) * 1.5);
+  outline: none;
+  width: 100%;
+}
+
+#keyboardVisualDiv {
+  margin-top: calc(var(--base-spacing) * 1);
+}
+
+@media only screen and (max-width: 600px) {
+  #expressionDiv {
+    margin-bottom: 10px;
+  }
+
+  #keyboardVisualDiv {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #expressionDiv {
+    margin-bottom: 5px;
+  }
+
+  #keyboardVisualDiv {
+    margin-top: 5px;
+  }
+}

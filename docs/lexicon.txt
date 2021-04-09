@@ -1,0 +1,18 @@
+This document outlines the vocabulary of this project's code base.
+--------------------------------------------------------------------------------
+
+clear: set value to nothing, could be null or a blank string depending on
+context.
+
+ellipses: a string of three consecutive periods => "..."
+
+initialize: set initial value or state.
+
+leftToRightMap: object that maps the "left" collection of items (The keys)
+to the "Right" collection of items (the values) in pairs.
+
+render: update visual state, may involve doing some logic to determine
+appearance.
+
+someEventHandler: callback function that gets called when the "some" event
+occurs.

@@ -1,0 +1,43 @@
+The following are the style conventions for all HTML5 code in this project.
+///////////////////////////////////////////////////////////////////////////////
+
+1. Use only lowercase letters for markup. Uppercase is acceptable for content.
+
+2. Always add quotes around attribute values.
+
+3. Always specify alt, width, and height for images.
+
+4. Avoid using spaces around equal signs.
+
+5. For readability, add blank lines to separate large or logical markup blocks.
+
+6. To improve compatibility with browsers, do not omit elements just because
+they are implied or the default value for one browser works.
+
+8. Avoid using inline CSS styling, unless it's added by JS code.
+
+9. Avoid using the <script> tag to implement JS code, only use it for linking
+files to the page. JS files should be in the document head marked with "defer"
+instead of being placed at the bottom of the <body> tag.
+
+10. Class attributes should be all lowercase, with dashes in between words.
+
+  for example:
+
+  class="toggle-button"
+
+11. IDs should be camelCase and include the element type at the end.
+
+  for example:
+
+  id="toggleButton"
+  id="playerTextInput"
+  id="expressionDiv"
+
+12. Empty elements should be closed.
+
+  for example:
+
+  <meta charset="utf-8">
+    should instead be
+  <meta charset="utf-8" />

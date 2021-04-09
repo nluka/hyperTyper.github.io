@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icons/enter-key.png" />
+    <title>hyperTyper - Feedback</title>
+
+    <!-- Common stylesheets -->
+    <link rel="stylesheet" href="css/common/general-styles.css" />
+    <link rel="stylesheet" href="css/common/internet-explorer-overlay.css" />
+    <link rel="stylesheet" href="css/common/navbar.css" />
+    <link rel="stylesheet" href="css/common/scrollbar.css" />
+    <link rel="stylesheet" href="css/common/section.css" />
+    <link rel="stylesheet" href="css/common/panel.css" />
+    <link rel="stylesheet" href="css/common/footer.css" />
+
+    <!-- Specific stylesheets -->
+    <link rel="stylesheet" href="css/feedback-form/feedback-form.css" />
+    <link rel="stylesheet" href="css/feedback-form/disclaimer.css" />
+
+    <!-- Page elements -->
+    <script src="js/common/page-elements.js" type="module"></script>
+    <script src="js/feedback-form/page-elements.js" type="module"></script>
+
+    <!-- Common scripts -->
+    <script src="js/common/Navbar.js" type="module"></script>
+
+    <!-- Specific scripts -->
+    <script src="js/feedback-form/form.js" type="module"></script>
+    <script src="js/feedback-form/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-elements-container">
+        <div class="site-name">hyperTyper</div>
+        <ul class="navbar-items-list" id="navbarItemsList" data-expanded="false">
+          <li class="navbar-item practice">
+            <a href="index.html" class="navbar-link">Practice</a>
+          </li>
+          <li class="navbar-item your-statistics">
+            <a href="your-statistics.html" class="navbar-link">Your Statistics</a>
+          </li>
+          <li class="navbar-item about">
+            <a href="about.html" class="navbar-link about">About</a>
+          </li>
+        </ul>
+        <div id="expandNavbarItemsListButton">
+          <span class="expand-navbar-items-button-line"></span>
+          <span class="expand-navbar-items-button-line"></span>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="feedback-form-section" id="formSection">
+        <div class="panel form-panel">
+          <h2 class="panel-heading feedback-form-heading">Report Feedback</h2>
+          <form enctype="text/plain" method="POST">
+            <label for="feedbackTypeSelect">Feedback Type (required)</label>
+            <select name="feedbackTypeSelect" id="feedbackTypeSelect" autocomplete="off" required="true">
+              <option value="" disabled selected hidden>Select an option</option>
+              <option value="bug">Bug</option>
+              <option value="suggestion">Suggestion</option>
+              <option value="comment">Comment</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="nameInput">Your Name (optional)</label>
+            <input type="text" name="nameInput" id="nameInput" autocomplete="off" />
+            <label for="fileUpload">File Upload (optional)</label>
+            <input type="file" name="fileUpload" id="fileUpload" multiple />
+            <label for="messageTextarea">Message (required)</label>
+            <textarea name="messageTextarea" id="messageTextarea" cols="50" rows="7" maxlength="500" required="true" autocomplete="off"></textarea>
+            <div class="message-chars-remaining-counter" id="messageCharsRemainingCounterDiv">500 characters left</div>
+            <input type="submit" value="Submit Feedback" id="submitFormInput" formaction="mailto:n.luka784@gmail.com" />
+          </form>
+        </div>
+      </section>
+
+      <section class="feedback-form-disclaimer">
+        <div class="panel feedback-form-disclaimer-panel">
+          <p>
+            <strong>Note:</strong>
+            This form is not functional yet, pressing 'submit feedback' will not submit anything. It will eventually be implemented, but for now it
+            remains a placeholder.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-elements-container">
+        <div class="site-author">
+          <a href="https://www.linkedin.com/in/nicholas-lukasevich/" target="blank" class="footer-link portfolio-link">Nicholas Lukasevich</a>
+          <span class="site-year">— 2021</span>
+        </div>
+        <ul class="footer-link-list">
+          <li class="footer-link-list-item">
+            <a href="feedback-form.html" target="blank" class="footer-link feedback-form-link current-page">Report Bug/Submit Feedback</a>
+          </li>
+          <li class="footer-link-list-item">
+            <a href="https://github.com/nluka/hyperTyper" target="blank" class="footer-link view-source-link">View Source</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

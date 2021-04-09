@@ -1,0 +1,48 @@
+.panel {
+  background-color: var(--bg-color-secondary);
+  border: 1px solid var(--border-color-secondary);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  height: fit-content;
+  max-width: 90%;
+  min-width: 250px;
+  position: relative;
+  width: var(--page-max-width);
+}
+
+.panel-heading {
+  align-items: center;
+  background-color: var(--bg-color-secondary);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: var(--font-color-primary);
+  display: flex;
+  font-family: var(--font-family-primary);
+  font-size: calc(var(--base-font-size) * 1.5);
+  font-weight: normal;
+  justify-content: space-between;
+  padding: calc(var(--base-spacing) * 1.5);
+  text-align: left;
+  user-select: none;
+}
+
+.panel-content-visibility-button {
+  background-color: transparent;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  color: var(--font-color-quinary);
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: 60%;
+  padding: 5px;
+}

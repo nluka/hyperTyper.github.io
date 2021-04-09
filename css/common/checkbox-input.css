@@ -1,0 +1,67 @@
+.switch {
+  align-items: center;
+  display: flex;
+  height: 18px;
+  justify-content: center;
+  min-width: 35px;
+  position: relative;
+  width: 35px;
+}
+
+.switch input {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 100%;
+  width: 100%;
+}
+
+.switch-slider {
+  background-color: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-primary);
+  border-radius: 5px;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.switch-slider:before {
+  background-color: white;
+  border: none;
+  border-radius: 25%;
+  bottom: 1px;
+  content: "";
+  height: 14px;
+  left: 1.25px;
+  position: absolute;
+  width: 14px;
+}
+
+.switch-slider, .switch-slider:before {
+  transition: 0.1s;
+}
+
+input:checked + .switch-slider {
+  background-color: var(--green-dark);
+  border-color: transparent;
+}
+
+input:checked + .switch-slider:hover,
+input:checked:focus + .switch-slider {
+  background-color: var(--green-medium);
+}
+
+input:not(:checked) + .switch-slider:hover,
+input:not(:checked):focus + .switch-slider {
+  background-color: rgb(22, 22, 22);
+}
+
+input:checked + .switch-slider:before {
+  transform: translateX(17px);
+  -webkit-transform: translateX(17px);
+  -moz-transform: translateX(17px);
+  -ms-transform: translateX(17px);
+  -o-transform: translateX(17px);
+}

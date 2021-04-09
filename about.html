@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icons/enter-key.png" />
+    <title>hyperTyper - About</title>
+
+    <!-- Common stylesheets -->
+    <link rel="stylesheet" href="css/common/general-styles.css" />
+    <link rel="stylesheet" href="css/common/internet-explorer-overlay.css" />
+    <link rel="stylesheet" href="css/common/navbar.css" />
+    <link rel="stylesheet" href="css/common/scrollbar.css" />
+    <link rel="stylesheet" href="css/common/section.css" />
+    <link rel="stylesheet" href="css/common/panel.css" />
+    <link rel="stylesheet" href="css/common/footer.css" />
+
+    <!-- Specific stylesheets -->
+    <link rel="stylesheet" href="css/about/project-information.css" />
+
+    <!-- Page elements -->
+    <script src="js/common/page-elements.js" type="module"></script>
+
+    <!-- Common scripts -->
+    <script src="js/common/functions.js" type="module"></script>
+    <script src="js/common/Navbar.js" type="module"></script>
+
+    <!-- Specific scripts -->
+    <script src="js/about/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-elements-container">
+        <div class="site-name">hyperTyper</div>
+        <ul class="navbar-items-list" id="navbarItemsList" data-expanded="false">
+          <li class="navbar-item practice">
+            <a href="index.html" class="navbar-link">Practice</a>
+          </li>
+          <li class="navbar-item your-statistics">
+            <a href="your-statistics.html" class="navbar-link">Your Statistics</a>
+          </li>
+          <li class="navbar-item about">
+            <a href="about.html" class="navbar-link about current-page">About</a>
+          </li>
+        </ul>
+        <div id="expandNavbarItemsListButton">
+          <span class="expand-navbar-items-button-line"></span>
+          <span class="expand-navbar-items-button-line"></span>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="project-information" id="projectInformationSection">
+        <div class="panel page-content">
+          <h1>Information about this project</h1>
+          <hr />
+
+          <h2>Introduction</h2>
+          <p>
+            hyperTyper is a highly-customizable web application designed for practicing typing skills in the most comprehensive way. It is meant to
+            improve upon popular platforms such as
+            <a href="https://play.typeracer.com/" target="blank">typeracer.com</a>, <a href="https://www.keybr.com/" target="blank">keybr.com</a>,
+            <a href="https://10fastfingers.com/" target="blank">10fastfingers.com</a>, etc. It takes some inspiration from these platforms, makes
+            changes and adds useful tools and features. I designed this application to be the most effective way to practice typing skills for
+            everyone, including programmers. In my opinion, hyperTyper is a vast improvement to the aforementioned platforms and is thus my platform
+            of choice for working on my typing skills.
+          </p>
+
+          <h2>Purpose</h2>
+          <p>
+            The main purpose of this project was to learn web development with HTML5/CSS3/JavaScript and gain practical programming/development
+            experience by building a large, real world project on my own - to get out of "tutorial hell". This project is entirely my creation, and
+            isn't based on tutorial projects.
+          </p>
+
+          <h2>What I Learned</h2>
+          <ul>
+            <li>Fundamentals of web development with HTML5, CSS3, Javascript</li>
+            <li>TypeScript, and converting a vanilla JavaScript project to utilize TypeScript</li>
+            <li>Working in and managing a large codebase that spans dozens of files</li>
+            <li>Web design principles and how to apply them in an unconventional project</li>
+            <li>Refactoring, and the importance of writing clean code</li>
+            <li>API consumption with fetch</li>
+            <li>Using GitHub as a repository and a hosting platform (GitHub Pages)</li>
+            <li>Finding, reading, understanding documentation related to web development</li>
+            <li>Asynchronous programming in JavaScript</li>
+            <li>DOM traversal and manipulation (used extensively throughout the project)</li>
+            <li>Debugging in the browser</li>
+            <li>Regular Expressions</li>
+            <li>JSON</li>
+            <li>Webscraping with Python (BeautifulSoup)</li>
+          </ul>
+
+          <h2>Code and Style Conventions</h2>
+          <p>
+            This project follows certain conventions, which are outlined out in the text files within /docs. There is also a project lexicon there.
+          </p>
+
+          <h2>Compatibility</h2>
+          <p>
+            This project was developed with several modern browsers in mind, such as Google Chrome, Safari, Mozilla Firefox, Microsoft Edge, Opera. I
+            have tried to maximize compatibility across those browsers. However, this project was mostly developed with Google Chrome and thus is the
+            most compatible browser. The project has been converted from vanilla modern JavaScript to utilize TypeScript, which has increased
+            compatibility for browsers that lack implementation of some modern JavaScript features.
+          </p>
+
+          <h2>Future</h2>
+          <p>
+            This project continues to be expanded and worked upon. There are many plans for new features and changes/improvements to existing ones. To
+            see what's in the works, check out the <a href="https://trello.com/b/S7YE0keL" target="blank">Trello Board</a>.
+          </p>
+
+          <h2>Credit</h2>
+          <span>favicon:</span>
+          <a href="https://icons8.com/icon/HYW07SD04icQ/enter-key" target="blank">Enter Key icon by Icons8</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-elements-container">
+        <div class="site-author">
+          <a href="https://www.linkedin.com/in/nicholas-lukasevich/" target="blank" class="footer-link portfolio-link">Nicholas Lukasevich</a>
+          <span class="site-year">— 2021</span>
+        </div>
+        <ul class="footer-link-list">
+          <li class="footer-link-list-item">
+            <a href="feedback-form.html" target="blank" class="footer-link feedback-form-link">Report Bug/Submit Feedback</a>
+          </li>
+          <li class="footer-link-list-item">
+            <a href="https://github.com/nluka/hyperTyper" target="blank" class="footer-link view-source-link">View Source</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

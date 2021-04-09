@@ -1,0 +1,90 @@
+1.0.1:
+- Added changelog.txt
+- JS:
+  - Minorly refactored Game.update() code, moved data members into constructor
+  - Updated GameStatisticsTable class to take in table cells elements as parameters
+  - Moved out two maps from Settings class and made them their own const objects
+  - Fixed a bug in Expression.correctSpacingErrorsForCharInString()
+  where a space would get inserted after each period in an ellipses
+  ("..." was being turned into ". . .")
+- HTML:
+  - Minor whitespace removal
+  - Improved game input element and feedback form by adding various attributes
+- CSS:
+  - Fixed horizontal overscroll on iOS devices
+  - Fixed checkbox input styles to hide underlying checkbox
+  - Fixed visual keyboard max-width to prevent it from flowing off the page
+  - Fixed tooltip widths for smaller screens, should no longer overflow the page
+  - Updated navbar box-shadows
+
+1.0.2:
+- Fixed typo in README.md and about.html
+- Removed code fragment left from Expression testing
+
+1.0.3:
+- Fixed Settings.setPhraseListsEnabledArrTo() reference to wrong map
+
+1.0.4:
+- Changed some identifiers
+- Predefined expression resources are now minified
+- Visual keyboard width now resizes correctly
+- Added IE incompatibility overlay for all pages
+
+1.0.5:
+- Changed some styling
+- Feedback form file upload now allows multiple files
+- Added some attributes to game input element to improve UX
+- Removed console logging of completed characters
+- Mistake analysis now shows what character was typed for the first 3 errors
+
+1.1:
+- Revamped tooltip descriptions
+- Changed site author link to point to my LinkedIn
+- Added some blank lines and comments as labels to make html more readable
+- Changed several identifiers to be more accurate/descriptive
+- Fixed footer for Firefox
+- Improved visual keyboard resizing robustness
+- Scrollbars in Firefox are now the right width
+- Expression spans border is now applied through stylesheet instead of inline
+- Refactored several code files to improve cleanliness and reduce nesting
+- Changed loading overlay content from text to a loader gif
+- navbar.js is now a common file instead of being specific to each page
+- combined expression-mode-and-phrase-settings-input-listeners.js and gameplay-and-audio-settings-input-listeners.js into 1 file
+- Changed countdown sound effects
+- Sudden death disqualifications are now indicated in the input area with placeholder text
+- Changed the way punctuation probability works in Expression.js
+- Removed unused code from GameStatisticsTable.js, no longer stores most recent text length or time elapsed
+- Added many new programming phrase lists
+- Changed structure of expression-resources directory to accomodate new files for the new phrase lists
+- Changed checkbox input styles to hopefully fix checkbox element in Safari
+
+1.1.1:
+- Now using minified versions of the new phrase list files
+
+2.0:
+- Completely refactored all JS code - made optimizations, improved cleanliness, consistency, naming, structure, readability and maintainability
+- Completely redid tooltips, they are now clickable icons that expand a modal
+- Changed expression mode setting from buttons to dropdown box
+- Minor styling and layout changes to settings menu
+- Changed mistake analysis, details for each character can now be viewed by clicking on the character instead of hovering.
+  Details are now a section of their own, no longer a tooltip.
+  No longer a limit for how many incorrect characters are shown (thanks to the new character analysis area).
+- Changed expression cursor style
+- Updated README.md and the "About" page
+- Added null span to expression to improve cursor functionality
+- Minor styling changes for expression spans
+- Improved mobile navbar dropdown button
+- Changed keyboard visual styles
+- Changed footer order
+
+2.0.1:
+- Removed unused instant-death-buzzer.mp3
+- Removed unused internet-explorer.js
+- Updated your-statistics.html scripts
+
+3.0:
+- Converted entire JS codebase to utilize TypeScript, did some more refactoring
+- JS ES6 modules are now unused
+- Changed expression-resources folder location
+- Updated README.md and "About" page contents
+- Added customizable phrase punctuation frequency

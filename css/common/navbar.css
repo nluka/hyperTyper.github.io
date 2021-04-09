@@ -1,0 +1,166 @@
+:root {
+  --navbar-height: calc(var(--base-spacing) * 4.5);
+}
+
+.navbar {
+  align-items: center;
+  background-color: var(--bg-color-secondary);
+  border-bottom: 1px solid var(--border-color-secondary);
+  /* box-shadow: 0 0 1px 1px rgb(5, 5, 5); */
+  display: flex;
+  justify-content: center;
+  left: 0;
+  min-width: 280px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+}
+
+.navbar-elements-container {
+  align-items: center;
+  display: flex;
+  height: var(--navbar-height);
+  justify-content: space-between;
+  max-width: 90%;
+  width: var(--page-max-width);
+}
+
+.site-name {
+  align-items: center;
+  color: var(--font-color-secondary);
+  display: flex;
+  font-family: var(--font-family-primary);
+  font-size: calc(var(--base-font-size) * 1.6);
+  font-weight: bold;
+  justify-content: center;
+}
+
+.navbar-items-list {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.navbar-item.practice,
+.navbar-item.your-statistics {
+  margin-right: 25px;
+}
+
+.navbar-link {
+  font-size: calc(var(--base-font-size) * 1);
+  user-select: none;
+}
+
+#expandNavbarItemsListButton {
+  background-color: transparent;
+  display: none;
+  height: 30px;
+  padding: 0;
+  position: relative;
+  width: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --navbar-expandable-responsive-menu-height: calc(var(--base-spacing) * 14);
+  }
+
+  .expand-navbar-items-button-line {
+    background-color: rgb(155, 155, 155);
+    border-radius: 5px;
+    height: 14%;
+    position: absolute;
+    transform-origin: center center;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    width: 100%;
+  }
+
+  .expand-navbar-items-button-line:first-child {
+    top: calc(50% - 7%);
+    /* transform: translate(0, -50%); */
+  }
+
+  .expand-navbar-items-button-line:last-child {
+    top: calc(50% - 7%);
+    transform: rotate(90deg);
+  }
+
+  .expand-navbar-items-button-line:first-child.rotated {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+
+  .expand-navbar-items-button-line:last-child.rotated {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+  }
+
+  .navbar-items-list {
+    background-color: var(--bg-color-tertiary);
+    border: 1px solid var(--border-color-secondary);
+    flex-direction: column;
+    height: var(--navbar-expandable-responsive-menu-height);
+    justify-content: space-evenly;
+    left: 0;
+    margin: 0;
+    padding: 30px 0;
+    position: absolute;
+    top: var(--navbar-height);
+    width: 100%;
+    z-index: 100;
+  }
+
+  .navbar-items-list[data-expanded="false"] {
+    display: none;
+  }
+
+  .navbar-item {
+    align-items: center;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .navbar-item.practice,
+  .navbar-item.your-statistics {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .navbar-link {
+    font-size: 20px;
+  }
+
+  .navbar-link.current-page {
+    background-color: var(--bg-color-quaternary);
+    border-color: var(--border-color-primary);
+  }
+
+  #expandNavbarItemsListButton {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .navbar {
+    padding: 0 1.25%;
+  }
+}

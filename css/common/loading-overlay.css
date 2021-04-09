@@ -1,0 +1,15 @@
+.loading-overlay {
+  align-items: center;
+  background-color: rgb(10, 10, 10);
+  color: var(--font-color-primary);
+  display: flex;
+  font-family: var(--font-family-primary);
+  font-size: 50px;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+}

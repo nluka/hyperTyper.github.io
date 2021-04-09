@@ -1,0 +1,62 @@
+.range-input-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--green-dark);
+  border: 1px solid transparent;
+  border-radius: 1.25px;
+  -webkit-border-radius: 1.25px;
+  -moz-border-radius: 1.25px;
+  -ms-border-radius: 1.25px;
+  -o-border-radius: 1.25px;
+  cursor: pointer;
+  height: 5px;
+  position: relative;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  width: 100%;
+}
+
+input[type="range"]:hover,
+input[type="range"]:focus {
+  background-color: var(--green-medium);
+}
+
+input[type="range"]:disabled {
+  background-color: var(--bg-color-quaternary);
+  border-color: var(--border-color-primary);
+  cursor: not-allowed;
+  opacity: 0.25;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  border-radius: 25%;
+  -webkit-border-radius: 25%;
+  height: 14px;
+  margin: 5px 0;
+  width: 7px;
+  z-index: 1000;
+}
+
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: none;
+  border-radius: 25%;
+  -moz-border-radius: 25%;
+  height: 14px;
+  width: 7px;
+}

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icons/enter-key.png" />
+    <title>hyperTyper - Play</title>
+
+    <!-- Common stylesheets -->
+    <link rel="stylesheet" href="css/common/general-styles.css" />
+    <link rel="stylesheet" href="css/common/internet-explorer-overlay.css" />
+    <link rel="stylesheet" href="css/common/loading-overlay.css" />
+    <link rel="stylesheet" href="css/common/navbar.css" />
+    <link rel="stylesheet" href="css/common/scrollbar.css" />
+    <link rel="stylesheet" href="css/common/section.css" />
+    <link rel="stylesheet" href="css/common/panel.css" />
+    <link rel="stylesheet" href="css/common/table.css" />
+    <link rel="stylesheet" href="css/common/tooltip.css" />
+    <link rel="stylesheet" href="css/common/checkbox-input.css" />
+    <link rel="stylesheet" href="css/common/select.css" />
+    <link rel="stylesheet" href="css/common/range-input.css" />
+    <link rel="stylesheet" href="css/common/number-input.css" />
+    <link rel="stylesheet" href="css/common/footer.css" />
+
+    <!-- Specific stylesheets -->
+    <link rel="stylesheet" href="css/practice/game-area.css" />
+    <link rel="stylesheet" href="css/practice/keyboard-visual.css" />
+    <link rel="stylesheet" href="css/practice/settings-menu.css" />
+    <link rel="stylesheet" href="css/practice/mistake-analyzer.css" />
+
+    <!-- Page elements -->
+    <script src="js/common/page-elements.js" type="module"></script>
+    <script src="js/practice/page-elements.js" type="module"></script>
+
+    <!-- Expression resources -->
+    <script src="js/expression-resources/local-quotes/local-quotes.min.js" type="module"></script>
+    <script src="js/expression-resources/english/english-words-common.js" type="module"></script>
+    <script src="js/expression-resources/english/english-words-random.js" type="module"></script>
+    <script src="js/expression-resources/numbers-symbols/numbers.js" type="module"></script>
+    <script src="js/expression-resources/numbers-symbols/symbols.min.js" type="module"></script>
+    <script src="js/expression-resources/general-programming/programming-common-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/general-programming/programming-common-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/c/c-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/c/c-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/cpp/cpp-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/cpp/cpp-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/csharp/csharp-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/csharp/csharp-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/css-html/css3-properties.min.js" type="module"></script>
+    <script src="js/expression-resources/css-html/html5-tags.min.js" type="module"></script>
+    <script src="js/expression-resources/java/java-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/java/java-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/javascript/javascript-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/javascript/javascript-operators.min.js" type="module"></script>
+    <script src="js/expression-resources/python/python-keywords.min.js" type="module"></script>
+    <script src="js/expression-resources/python/python-operators.min.js" type="module"></script>
+
+    <!-- Specific scripts -->
+    <script src="js/practice/main.js" type="module"></script>
+    <script src="js/practice/CharacterAnalysis.js" type="module"></script>
+    <script src="js/practice/Expression.js" type="module"></script>
+    <script src="js/practice/GameActionButton.js" type="module"></script>
+    <script src="js/practice/GameDirector.js" type="module"></script>
+    <script src="js/practice/GameInput.js" type="module"></script>
+    <script src="js/practice/GameResult.js" type="module"></script>
+    <script src="js/practice/GameStatisticsTable.js" type="module"></script>
+    <script src="js/practice/GameStopCode.js" type="module"></script>
+    <script src="js/practice/GameText.js" type="module"></script>
+    <script src="js/practice/GameTimer.js" type="module"></script>
+    <script src="js/practice/GameWpmTracker.js" type="module"></script>
+    <script src="js/practice/KeyboardVisual.js" type="module"></script>
+    <script src="js/practice/LocalQuote.js" type="module"></script>
+    <script src="js/practice/MistakeAnalyzer.js" type="module"></script>
+    <script src="js/practice/Phrase.js" type="module"></script>
+    <script src="js/practice/Settings.js" type="module"></script>
+    <script src="js/practice/SettingsMenu.js" type="module"></script>
+    <script src="js/practice/SettingsStorage.js" type="module"></script>
+    <script src="js/practice/Sound.js" type="module"></script>
+    <script src="js/practice/StringEditor.js" type="module"></script>
+    <script src="js/practice/Quote.js" type="module"></script>
+    <script src="js/practice/QuotableApi.js" type="module"></script>
+
+    <!-- Common scripts -->
+    <script src="js/common/Navbar.js" type="module"></script>
+    <script src="js/common/PageLoader.js" type="module"></script>
+    <script src="js/common/constants.js" type="module"></script>
+    <script src="js/common/functions.js" type="module"></script>
+    <script src="js/common/ElementVisibility.js" type="module"></script>
+    <script src="js/common/ElementVisibilityStateStorage.js" type="module"></script>
+    <script src="js/common/StatisticsStorage.js" type="module"></script>
+    <script src="js/common/Tooltip.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="loading-overlay" id="loaderOverlayDiv">
+      <img src="gifs/gradient-loader-dark-bg.gif" alt="Loading..." id="loaderImg" width="100px" height="100px" />
+    </div>
+
+    <nav class="navbar">
+      <div class="navbar-elements-container">
+        <div class="site-name" id="siteNameDiv">hyperTyper</div>
+        <ul class="navbar-items-list" id="navbarItemsList" data-expanded="false">
+          <li class="navbar-item practice">
+            <a href="index.html" class="navbar-link current-page">Practice</a>
+          </li>
+          <li class="navbar-item your-statistics">
+            <a href="your-statistics.html" class="navbar-link">Your Statistics</a>
+          </li>
+          <li class="navbar-item about">
+            <a href="about.html" class="navbar-link about">About</a>
+          </li>
+        </ul>
+        <button id="expandNavbarItemsListButton">
+          <span class="expand-navbar-items-button-line"></span>
+          <span class="expand-navbar-items-button-line"></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="game-area" id="gameSection">
+        <div class="panel game-header-panel">
+          <div class="game-info-container">
+            <div id="gameTimerDiv">--:--</div>
+            <div class="item-and-tooltip-icon-container">
+              <div class="game-wpm-tracker" id="gameWpmTrackerDiv">— WPM</div>
+              <div class="tooltip-icon" id="gameWpmTrackerTooltipIconDiv">i</div>
+            </div>
+          </div>
+          <button id="gameActionButton">Start</button>
+        </div>
+
+        <div class="panel game-panel">
+          <div id="expressionDiv">Click the 'Start' button or click the input box below and press 'Enter' to start.</div>
+          <input type="text" id="gameInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+
+        <div class="panel keyboard-visual-panel">
+          <div class="panel" id="keyboardVisualDiv" data-visible="false">
+            <div class="general-keys-container">
+              <div class="row">
+                <div class="square-key backquote-key" id="backquoteKeyDiv" data-symbol-key>
+                  <div class="first-label">~</div>
+                  <div class="second-label">`</div>
+                </div>
+                <div class="square-key" id="digit1KeyDiv" data-digit-key>
+                  <div class="first-label">!</div>
+                  <div class="second-label">1</div>
+                </div>
+                <div class="square-key" id="digit2KeyDiv" data-digit-key>
+                  <div class="first-label">@</div>
+                  <div class="second-label">2</div>
+                </div>
+                <div class="square-key" id="digit3KeyDiv" data-digit-key>
+                  <div class="first-label">#</div>
+                  <div class="second-label">3</div>
+                </div>
+                <div class="square-key" id="digit4KeyDiv" data-digit-key>
+                  <div class="first-label">$</div>
+                  <div class="second-label">4</div>
+                </div>
+                <div class="square-key" id="digit5KeyDiv" data-digit-key>
+                  <div class="first-label">%</div>
+                  <div class="second-label">5</div>
+                </div>
+                <div class="square-key" id="digit6KeyDiv" data-digit-key>
+                  <div class="first-label">^</div>
+                  <div class="second-label">6</div>
+                </div>
+                <div class="square-key" id="digit7KeyDiv" data-digit-key>
+                  <div class="first-label">&</div>
+                  <div class="second-label">7</div>
+                </div>
+                <div class="square-key" id="digit8KeyDiv" data-digit-key>
+                  <div class="first-label">*</div>
+                  <div class="second-label">8</div>
+                </div>
+                <div class="square-key" id="digit9KeyDiv" data-digit-key>
+                  <div class="first-label">(</div>
+                  <div class="second-label">9</div>
+                </div>
+                <div class="square-key" id="digit0KeyDiv" data-digit-key>
+                  <div class="first-label">)</div>
+                  <div class="second-label">0</div>
+                </div>
+                <div class="square-key" id="minusKeyDiv" data-symbol-key>
+                  <div class="first-label">_</div>
+                  <div class="second-label">-</div>
+                </div>
+                <div class="square-key" id="equalKeyDiv" data-symbol-key>
+                  <div class="first-label">+</div>
+                  <div class="second-label">=</div>
+                </div>
+                <div class="rect-key backspace-key" id="backspaceKeyDiv" data-function-key>
+                  <div class="first-label">⟵</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rect-key tab-key blank" id="tabKeyDiv" data-function-key>
+                  <div class="first-label">Tab</div>
+                  <div class="second-label">⭾</div>
+                </div>
+                <div class="square-key" id="qKeyDiv">
+                  <div class="first-label">Q</div>
+                </div>
+                <div class="square-key" id="wKeyDiv">
+                  <div class="first-label">W</div>
+                </div>
+                <div class="square-key" id="eKeyDiv">
+                  <div class="first-label">E</div>
+                </div>
+                <div class="square-key" id="rKeyDiv">
+                  <div class="first-label">R</div>
+                </div>
+                <div class="square-key" id="tKeyDiv">
+                  <div class="first-label">T</div>
+                </div>
+                <div class="square-key" id="yKeyDiv">
+                  <div class="first-label">Y</div>
+                </div>
+                <div class="square-key" id="uKeyDiv">
+                  <div class="first-label">U</div>
+                </div>
+                <div class="square-key" id="iKeyDiv">
+                  <div class="first-label">I</div>
+                </div>
+                <div class="square-key" id="oKeyDiv">
+                  <div class="first-label">O</div>
+                </div>
+                <div class="square-key" id="pKeyDiv">
+                  <div class="first-label">P</div>
+                </div>
+                <div class="square-key" id="bracketLeftKeyDiv" data-symbol-key data-bracket-key>
+                  <div class="first-label">{</div>
+                  <div class="second-label">[</div>
+                </div>
+                <div class="square-key" id="bracketRightKeyDiv" data-symbol-key data-bracket-key>
+                  <div class="first-label">}</div>
+                  <div class="second-label">]</div>
+                </div>
+                <div class="rect-key backslash-key" id="backslashKeyDiv" data-symbol-key>
+                  <div class="first-label">|</div>
+                  <div class="second-label">\</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rect-key caps-lock-key" id="capsLockKeyDiv" data-function-key>
+                  <div class="first-label">Caps<br />Lock</div>
+                </div>
+                <div class="square-key" id="aKeyDiv">
+                  <div class="first-label">A</div>
+                </div>
+                <div class="square-key" id="sKeyDiv">
+                  <div class="first-label">S</div>
+                </div>
+                <div class="square-key" id="dKeyDiv">
+                  <div class="first-label">D</div>
+                </div>
+                <div class="square-key" id="fKeyDiv">
+                  <div class="first-label">F</div>
+                </div>
+                <div class="square-key" id="gKeyDiv">
+                  <div class="first-label">G</div>
+                </div>
+                <div class="square-key" id="hKeyDiv">
+                  <div class="first-label">H</div>
+                </div>
+                <div class="square-key" id="jKeyDiv">
+                  <div class="first-label">J</div>
+                </div>
+                <div class="square-key" id="kKeyDiv">
+                  <div class="first-label">K</div>
+                </div>
+                <div class="square-key" id="lKeyDiv">
+                  <div class="first-label">L</div>
+                </div>
+                <div class="square-key" id="semicolonKeyDiv" data-symbol-key>
+                  <div class="first-label">:</div>
+                  <div class="second-label">;</div>
+                </div>
+                <div class="square-key" id="quoteKeyDiv" data-symbol-key>
+                  <div class="first-label">"</div>
+                  <div class="second-label">'</div>
+                </div>
+                <div class="rect-key enter-key" id="enterKeyDiv" data-function-key>
+                  <div class="first-label">Enter</div>
+                  <div class="second-label">↵</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rect-key shift-left-key" id="shiftLeftKeyDiv" data-function-key>
+                  <div class="first-label">Shift</div>
+                  <div class="second-label">⇧</div>
+                </div>
+                <div class="square-key" id="zKeyDiv">
+                  <div class="first-label">Z</div>
+                </div>
+                <div class="square-key" id="xKeyDiv">
+                  <div class="first-label">X</div>
+                </div>
+                <div class="square-key" id="cKeyDiv">
+                  <div class="first-label">C</div>
+                </div>
+                <div class="square-key" id="vKeyDiv">
+                  <div class="first-label">V</div>
+                </div>
+                <div class="square-key" id="bKeyDiv">
+                  <div class="first-label">B</div>
+                </div>
+                <div class="square-key" id="nKeyDiv">
+                  <div class="first-label">N</div>
+                </div>
+                <div class="square-key" id="mKeyDiv">
+                  <div class="first-label">M</div>
+                </div>
+                <div class="square-key" id="commaKeyDiv" data-symbol-key>
+                  <div class="first-label"><</div>
+                  <div class="second-label">,</div>
+                </div>
+                <div class="square-key" id="periodKeyDiv" data-symbol-key>
+                  <div class="first-label">></div>
+                  <div class="second-label">.</div>
+                </div>
+                <div class="square-key" id="slashKeyDiv" data-symbol-key>
+                  <div class="first-label">?</div>
+                  <div class="second-label">/</div>
+                </div>
+                <div class="rect-key rightshift-key" id="shiftRightKeyDiv" data-function-key>
+                  <div class="first-label">Shift</div>
+                  <div class="second-label">⇧</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rect-key control-left-key" id="controlLeftKeyDiv" data-function-key>
+                  <div class="first-label">Ctrl</div>
+                </div>
+                <div class="square-key blank">
+                  <div class="first-label"></div>
+                </div>
+                <div class="rect-key alt-left-key" id="altLeftKeyDiv" data-function-key>
+                  <div class="first-label">Alt</div>
+                </div>
+                <div class="rect-key space-key" id="spaceKeyDiv" data-function-key>
+                  <div class="first-label">Space</div>
+                </div>
+                <div class="rect-key alt-right-key" id="altRightKeyDiv" data-function-key>
+                  <div class="first-label">Alt</div>
+                </div>
+                <div class="square-key blank">
+                  <div class="first-label"></div>
+                </div>
+                <div class="square-key blank">
+                  <div class="first-label"></div>
+                </div>
+                <div class="rect-key control-right-key" id="controlRightKeyDiv" data-function-key>
+                  <div class="first-label">Ctrl</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings">
+        <div class="panel settings-panel">
+          <h2 class="panel-heading settings-panel-heading">
+            Settings
+            <button class="panel-content-visibility-button" id="toggleVisibilitySettingsMenuButton">Show</button>
+          </h2>
+
+          <div class="settings-menu" id="settingsMenuDiv">
+            <div class="column-1">
+              <div class="setting-category-heading">Gameplay</div>
+              <div class="gameplay-settings">
+                <div class="setting-label-and-input-container">
+                  <label for="countdownCheckbox">Countdown</label>
+                  <label class="switch">
+                    <input type="checkbox" id="countdownCheckbox" checked />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="expressionModeSelect"> Expression Mode </label>
+                    <div class="tooltip-icon" id="expressionModeTooltipIconDiv">i</div>
+                  </div>
+                  <select name="expressionMode" id="expressionModeSelect">
+                    <option value="quote" selected>Quote</option>
+                    <option value="phrase">Phrase</option>
+                  </select>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="instantDeathCheckbox">Instant Death</label>
+                    <div class="tooltip-icon" id="instantDeathTooltipIconDiv">i</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="instantDeathCheckbox" />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="keyboardVisualCheckbox">Keyboard Visual</label>
+                    <div class="tooltip-icon" id="keyboardVisualTooltipIconDiv">i</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="keyboardVisualCheckbox" />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="punctuationCheckbox">Punctuation</label>
+                    <div class="tooltip-icon" id="punctuationTooltipIconDiv">i</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="punctuationCheckbox" checked />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="trackStatisticsCheckbox">Track Statistics</label>
+                    <div class="tooltip-icon" id="trackStatisticsTooltipIconDiv">i</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="trackStatisticsCheckbox" checked />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-category-heading">Audio</div>
+              <div class="audio-settings">
+                <div class="setting-label-and-input-container">
+                  <label for="soundEffectsCheckbox">Play Sound Effects</label>
+                  <label class="switch">
+                    <input type="checkbox" id="soundEffectsCheckbox" checked />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <label for="soundVolumeRange" class="for-range-input">Volume</label>
+                  <div class="range-input-container">
+                    <input type="range" class="range-input" id="soundVolumeRange" min="1" max="100" value="50" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column-2">
+              <div id="phraseSettingsContainerDiv">
+                <div class="setting-category-heading phrase-settings-heading">Phrase</div>
+
+                <div class="setting-label-and-input-container phrase-item-collections">
+                  <div class="item-and-tooltip-icon-container phrase-item-collections">
+                    <div class="phrase-item-collections-container-heading">Item Collections</div>
+                    <div class="tooltip-icon" id="phraseItemCollectionsTooltipIconDiv">i</div>
+                  </div>
+
+                  <div class="phrase-item-collections-container">
+                    <div class="phrase-item-collection-subset-container english">
+                      <button class="phrase-item-collection-button" id="englishWordsCommonCollectionButton" disabled="true" data-active="false">
+                        Common English Words
+                      </button>
+                      <button class="phrase-item-collection-button" id="englishWordsRandomCollectionButton" disabled="true" data-active="false">
+                        Random English Words
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container numbers-symbols">
+                      <button class="phrase-item-collection-button" id="numbersCollectionButton" disabled="true" data-active="false">Numbers</button>
+                      <button class="phrase-item-collection-button" id="symbolsCollectionButton" disabled="true" data-active="false">Symbols</button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container general-programming">
+                      <button class="phrase-item-collection-button" id="commonKeywordsCollectionButton" disabled="true" data-active="false">
+                        Common Programming Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="commonOperatorsCollectionButton" disabled="true" data-active="false">
+                        Common Programming Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="cKeywordsCollectionButton" disabled="true" data-active="false">
+                        C Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="cOperatorsCollectionButton" disabled="true" data-active="false">
+                        C Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="cppKeywordsCollectionButton" disabled="true" data-active="false">
+                        C++ Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="cppOperatorsCollectionButton" disabled="true" data-active="false">
+                        C++ Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="csharpKeywordsCollectionButton" disabled="true" data-active="false">
+                        C# Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="csharpOperatorsCollectionButton" disabled="true" data-active="false">
+                        C# Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="css3PropertiesCollectionButton" disabled="true" data-active="false">
+                        CSS3 Props
+                      </button>
+                      <button class="phrase-item-collection-button" id="html5TagsCollectionButton" disabled="true" data-active="false">
+                        HTML5 Tags
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="javaKeywordsCollectionButton" disabled="true" data-active="false">
+                        Java Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="javaOperatorsCollectionButton" disabled="true" data-active="false">
+                        Java Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="javascriptKeywordsCollectionButton" disabled="true" data-active="false">
+                        JS Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="javascriptOperatorsCollectionButton" disabled="true" data-active="false">
+                        JS Operators
+                      </button>
+                    </div>
+
+                    <hr class="phrase-item-collection-subset-separator" />
+
+                    <div class="phrase-item-collection-subset-container">
+                      <button class="phrase-item-collection-button" id="pythonKeywordsCollectionButton" disabled="true" data-active="false">
+                        Python Keywords
+                      </button>
+                      <button class="phrase-item-collection-button" id="pythonOperatorsCollectionButton" disabled="true" data-active="false">
+                        Python Operators
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <label for="phraseItemCountNumberInput">Item Count</label>
+                  <input type="number" id="phraseItemCountNumberInput" min="1" max="100" step="1" value="25" disabled="true" />
+                </div>
+
+                <div class="setting-label-and-input-container">
+                  <div class="item-and-tooltip-icon-container">
+                    <label for="phrasePunctuationFrequencyRange" class="for-range-input">Punctuation Frequency</label>
+                    <div class="tooltip-icon" id="phrasePunctuationFrequencyTooltipIconDiv">i</div>
+                  </div>
+                  <div class="range-input-container">
+                    <input type="range" class="range-input" id="phrasePunctuationFrequencyRange" min="1" max="100" value="10" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-statistics">
+        <div class="panel game-statistics-panel">
+          <h2 class="panel-heading">
+            Statistics
+            <button class="panel-content-visibility-button" id="toggleVisibilityGameStatisticsTableButton">Hide</button>
+          </h2>
+
+          <table id="gameStatisticsTable">
+            <tbody>
+              <tr>
+                <th>
+                  <div class="item-and-tooltip-icon-container">
+                    <div>Net Words Per Minute</div>
+                    <div class="tooltip-icon" id="wpmTooltipIconDiv">i</div>
+                  </div>
+                </th>
+                <td id="wpmTableData">···</td>
+              </tr>
+              <tr>
+                <th>
+                  <div class="item-and-tooltip-icon-container">
+                    <div>Accuracy</div>
+                    <div class="tooltip-icon" id="accuracyTooltipIconDiv">i</div>
+                  </div>
+                </th>
+                <td id="accuracyTableData">···</td>
+              </tr>
+              <tr>
+                <th>Text Length (characters)</th>
+                <td id="textLengthCharsTableData">···</td>
+              </tr>
+              <tr>
+                <th>Time (seconds)</th>
+                <td id="timeElapsedTableData">···</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mistake-analysis">
+        <div class="panel mistake-analysis-panel">
+          <h2 class="panel-heading">
+            Mistakes
+            <button class="panel-content-visibility-button" id="toggleVisibilityMistakeAnalyzerButton">Hide</button>
+          </h2>
+          <div id="mistakeAnalyzerDiv">
+            <div id="analyzedExpressionDiv">Complete a game to analyze mistakes.</div>
+            <div id="characterAnalysisDiv" data-visible="false">You can do detailed mistake analysis here.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-elements-container">
+        <div class="site-author">
+          <a href="https://www.linkedin.com/in/nicholas-lukasevich/" target="blank" class="footer-link portfolio-link">Nicholas Lukasevich</a>
+          <span class="site-year">— 2021</span>
+        </div>
+        <ul class="footer-link-list">
+          <li class="footer-link-list-item">
+            <a href="feedback-form.html" target="blank" class="footer-link feedback-form-link">Report Bug/Submit Feedback</a>
+          </li>
+          <li class="footer-link-list-item">
+            <a href="https://github.com/nluka/hyperTyper" target="blank" class="footer-link view-source-link">View Source</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

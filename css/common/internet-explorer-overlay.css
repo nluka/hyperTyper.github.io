@@ -1,0 +1,16 @@
+.internet-explorer-overlay {
+  align-items: center;
+  background-color: rgb(10, 10, 10);
+  color: rgb(255, 255, 255);
+  display: flex;
+  font-size: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  padding: 15%;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10000;
+}

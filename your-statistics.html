@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icons/enter-key.png" />
+    <title>hyperTyper - Your Statistics</title>
+
+    <!-- Common stylesheets -->
+    <link rel="stylesheet" href="css/common/general-styles.css" />
+    <link rel="stylesheet" href="css/common/internet-explorer-overlay.css" />
+    <link rel="stylesheet" href="css/common/loading-overlay.css" />
+    <link rel="stylesheet" href="css/common/navbar.css" />
+    <link rel="stylesheet" href="css/common/scrollbar.css" />
+    <link rel="stylesheet" href="css/common/section.css" />
+    <link rel="stylesheet" href="css/common/panel.css" />
+    <link rel="stylesheet" href="css/common/table.css" />
+    <link rel="stylesheet" href="css/common/footer.css" />
+
+    <!-- Specific stylesheets -->
+    <link rel="stylesheet" href="css/your-statistics/clear-statistics-button.css" />
+
+    <!-- Specific scripts -->
+    <script src="js/your-statistics/page-elements.js" type="module"></script>
+    <script src="js/your-statistics/WpmTable.js" type="module"></script>
+    <script src="js/your-statistics/AccuracyTable.js" type="module"></script>
+    <script src="js/your-statistics/ParticipationTable.js" type="module"></script>
+    <script src="js/your-statistics/main.js" type="module"></script>
+
+    <!-- Common scripts -->
+    <script src="js/common/page-elements.js" type="module"></script>
+    <script src="js/common/Navbar.js" type="module"></script>
+    <script src="js/common/PageLoader.js" type="module"></script>
+    <script src="js/common/constants.js" type="module"></script>
+    <script src="js/common/functions.js" type="module"></script>
+    <script src="js/common/ElementVisibility.js" type="module"></script>
+    <script src="js/common/ElementVisibilityStateStorage.js" type="module"></script>
+    <script src="js/common/StatisticsStorage.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="loading-overlay" id="loaderOverlayDiv">
+      <img src="gifs/gradient-loader-dark-bg.gif" alt="Loading..." id="loaderImg" width="100px" height="100px" />
+    </div>
+
+    <nav class="navbar">
+      <div class="navbar-elements-container">
+        <div class="site-name">hyperTyper</div>
+        <ul class="navbar-items-list" id="navbarItemsList" data-expanded="false">
+          <li class="navbar-item practice">
+            <a href="index.html" class="navbar-link">Practice</a>
+          </li>
+          <li class="navbar-item your-statistics">
+            <a href="your-statistics.html" class="navbar-link current-page">Your Statistics</a>
+          </li>
+          <li class="navbar-item about">
+            <a href="about.html" class="navbar-link about">About</a>
+          </li>
+        </ul>
+        <div id="expandNavbarItemsListButton">
+          <span class="expand-navbar-items-button-line"></span>
+          <span class="expand-navbar-items-button-line"></span>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="wpm-statistics first" id="wpmStatisticsSection">
+        <div class="panel wpm-statistics-panel">
+          <h2 class="panel-heading">
+            Net WPM
+            <button class="panel-content-visibility-button" id="toggleViewWpmStatisticsButton">Hide</button>
+          </h2>
+
+          <table class="wpm-statistics-table" id="wpmStatisticsTable" data-visible="true">
+            <tbody>
+              <tr>
+                <th>Last Game</th>
+                <td id="wpmLastGameTableData">···</td>
+              </tr>
+              <tr>
+                <th>Last 10 Games</th>
+                <td id="wpmLastTenGamesTableData">···</td>
+              </tr>
+              <tr>
+                <th>Average to Date</th>
+                <td id="wpmAverageToDateTableData">···</td>
+              </tr>
+              <tr>
+                <th>All-time Best</th>
+                <td id="wpmAllTimeBestTableData">···</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="accuracy-statistics">
+        <div class="panel accuracy-statistics-panel">
+          <h2 class="panel-heading">
+            Accuracy %
+            <button class="panel-content-visibility-button" id="toggleViewAccuracyStatisticsButton">Hide</button>
+          </h2>
+
+          <table class="accuracy-statistics-table" id="accuracyStatisticsTable" data-visible="true">
+            <tr>
+              <th>Last Game</th>
+              <td id="accuracyLastGameTableData">···</td>
+            </tr>
+            <tr>
+              <th>Last 10 Games</th>
+              <td id="accuracyLastTenGamesTableData">···</td>
+            </tr>
+            <tr>
+              <th>Average to Date</th>
+              <td id="accuracyAverageToDateTableData">···</td>
+            </tr>
+            <tr>
+              <th>All-time Best</th>
+              <td id="accuracyAllTimeBestTableData">···</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="participation-statistics">
+        <div class="panel participation-statistics-panel">
+          <h2 class="panel-heading">
+            Participation
+            <button class="panel-content-visibility-button" id="toggleViewParticipationStatisticsButton">Hide</button>
+          </h2>
+
+          <table class="participation-statistics-table" id="participationStatisticsTable" data-visible="false">
+            <tr>
+              <th>Playtime</th>
+              <td id="playtimeTableData">···</td>
+            </tr>
+            <tr>
+              <th>Games Completed</th>
+              <td id="gamesCompletedTableData">···</td>
+            </tr>
+            <tr>
+              <th>Gamed Aborted</th>
+              <td id="gamesAbortedTableData">···</td>
+            </tr>
+            <tr>
+              <th>Games Disqualified</th>
+              <td id="gamesDisqualifiedTableData">···</td>
+            </tr>
+            <tr>
+              <th>Games Cheated</th>
+              <td id="gamesCheatedTableData">···</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="clear-localstorage">
+        <button class="clear-localstorage-button" id="clearStatisticsStorageButton">Clear All Statistics</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-elements-container">
+        <div class="site-author">
+          <a href="https://www.linkedin.com/in/nicholas-lukasevich/" target="blank" class="footer-link portfolio-link">Nicholas Lukasevich</a>
+          <span class="site-year">— 2021</span>
+        </div>
+        <ul class="footer-link-list">
+          <li class="footer-link-list-item">
+            <a href="feedback-form.html" target="blank" class="footer-link feedback-form-link">Report Bug/Submit Feedback</a>
+          </li>
+          <li class="footer-link-list-item">
+            <a href="https://github.com/nluka/hyperTyper" target="blank" class="footer-link view-source-link">View Source</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
