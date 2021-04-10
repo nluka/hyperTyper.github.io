@@ -88,3 +88,9 @@
 - Changed expression-resources folder location
 - Updated README.md and "About" page contents
 - Added customizable phrase punctuation frequency
+
+3.0.1:
+- Changed some identifiers
+- Made some changes to html text content
+- Fixed TS code for Net WPM, Accuracy %, and Participation tables
+- Fixed clear statistics button

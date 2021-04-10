@@ -148,10 +148,10 @@ export const gameStatistics_table = document.getElementById("gameStatisticsTable
 export const wpmTooltipIcon_div = document.getElementById("wpmTooltipIconDiv") as HTMLDivElement;
 export const wpm_td = document.getElementById("wpmTableData") as HTMLTableDataCellElement;
 
-export const accuracyTooltipIcon_div = document.getElementById("accuracyTooltipIconDiv") as HTMLDivElement;
-export const accuracy_td = document.getElementById("accuracyTableData") as HTMLTableDataCellElement;
+export const accuracyTooltipIcon_div = document.getElementById("accuracyPercentageTooltipIconDiv") as HTMLDivElement;
+export const accuracy_td = document.getElementById("accuracyPercentageTableData") as HTMLTableDataCellElement;
 
-export const textLength_td = document.getElementById("textLengthCharsTableData") as HTMLTableDataCellElement;
+export const textLength_td = document.getElementById("textLengthTableData") as HTMLTableDataCellElement;
 
 export const timeElapsed_td = document.getElementById("timeElapsedTableData") as HTMLTableDataCellElement;
 //#endregion

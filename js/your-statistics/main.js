@@ -31,11 +31,6 @@ function addButtonClickEventListenersForAllElementVisibilityTogglers() {
     ElementVisibility.addToggleButtonClickEventListener(accuracyTable.tableElement, AccuracyTable.ELEMENT_ID, toggleVisibilityAccuracyStatistics_button);
     ElementVisibility.addToggleButtonClickEventListener(participationTable.tableElement, ParticipationTable.ELEMENT_ID, toggleVisibilityParticipationStatistics_button);
 }
-function refreshAllTables() {
-    wpmTable.renderAllCells();
-    accuracyTable.renderAllCells();
-    participationTable.renderAllCells();
-}
 function clearStatisticsButtonClickEventHandler() {
     var didUserPressOk = confirm("Are you sure you want to clear your statistics?\n" +
         "This cannot be undone.");
@@ -43,6 +38,11 @@ function clearStatisticsButtonClickEventHandler() {
         return;
     }
     StatisticsStorage.removeAllItems();
-    refreshAllTables();
+    setTimeout(refreshAllTables, 250);
+}
+function refreshAllTables() {
+    wpmTable.renderAllCells();
+    accuracyTable.renderAllCells();
+    participationTable.renderAllCells();
 }
 main();

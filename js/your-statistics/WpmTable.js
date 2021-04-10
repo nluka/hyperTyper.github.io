@@ -5,20 +5,27 @@ var WpmTable = /** @class */ (function () {
     function WpmTable() {
         this.tableElement = wpmStatistics_table;
         this.toggleVisibilityButtonElement = toggleVisibilityWpmStatistics_button;
-        this.lastGameValue = StatisticsStorage.getWpmLastGameIfExists(1);
-        this.lastTenGamesValue = StatisticsStorage.getWpmLastTenGamesIfExists(1);
-        this.averageToDateValue = StatisticsStorage.getWpmAverageToDateIfExists(1);
-        this.allTimeBestValue = StatisticsStorage.getWpmAllTimeBestIfExists(1);
+        this.lastGameValue = null;
+        this.lastTenGamesValue = null;
+        this.averageToDateValue = null;
+        this.allTimeBestValue = null;
         WpmTable.instanceCount++;
         if (WpmTable.instanceCount > WpmTable.instanceCountLimit) {
             throwExceededClassInstanceLimitException("WpmTable", WpmTable.instanceCountLimit);
         }
     }
     WpmTable.prototype.renderAllCells = function () {
+        this.refreshValues();
         this.renderLastGameCell();
         this.renderLastTenGamesCell();
         this.renderAverageToDateCell();
         this.renderAllTimeBestCell();
+    };
+    WpmTable.prototype.refreshValues = function () {
+        this.lastGameValue = StatisticsStorage.getWpmLastGameIfExists(1);
+        this.lastTenGamesValue = StatisticsStorage.getWpmLastTenGamesIfExists(1);
+        this.averageToDateValue = StatisticsStorage.getWpmAverageToDateIfExists(1);
+        this.allTimeBestValue = StatisticsStorage.getWpmAllTimeBestIfExists(1);
     };
     WpmTable.prototype.renderLastGameCell = function () {
         this.renderCell(wpmLastGame_td, this.lastGameValue);

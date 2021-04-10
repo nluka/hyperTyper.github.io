@@ -178,7 +178,6 @@ var StatisticsStorage = /** @class */ (function () {
     StatisticsStorage.removeAllItems = function () {
         var keys = Object.values(this.KEYS);
         keys.forEach(function (key) {
-            console.log(key);
             localStorage.removeItem(key);
         });
     };

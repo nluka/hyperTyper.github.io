@@ -6,22 +6,30 @@ var ParticipationTable = /** @class */ (function () {
     function ParticipationTable() {
         this.tableElement = participationStatistics_table;
         this.toggleVisibilityButtonElement = toggleVisibilityParticipationStatistics_button;
-        this.playtimeInSecondsValue = StatisticsStorage.getPlaytimeInSeconds(1);
-        this.gamesCompletedValue = StatisticsStorage.getGamesCompleted();
-        this.gamesAbortedValue = StatisticsStorage.getGamesAborted();
-        this.gamesDisqualifiedValue = StatisticsStorage.getGamesDisqualified();
-        this.gamesCheatedValue = StatisticsStorage.getGamesCheated();
+        this.playtimeInSecondsValue = null;
+        this.gamesCompletedValue = null;
+        this.gamesAbortedValue = null;
+        this.gamesDisqualifiedValue = null;
+        this.gamesCheatedValue = null;
         ParticipationTable.instanceCount++;
         if (ParticipationTable.instanceCount > ParticipationTable.instanceCountLimit) {
             throwExceededClassInstanceLimitException("ParticipationTable", ParticipationTable.instanceCountLimit);
         }
     }
     ParticipationTable.prototype.renderAllCells = function () {
+        this.refreshValues();
         this.renderPlaytimeCell();
         this.renderGamesCompletedCell();
         this.renderGamesAbortedCell();
         this.renderGamesDisqualifiedCell();
         this.renderGamesCheatedCell();
+    };
+    ParticipationTable.prototype.refreshValues = function () {
+        this.playtimeInSecondsValue = StatisticsStorage.getPlaytimeInSeconds(1);
+        this.gamesCompletedValue = StatisticsStorage.getGamesCompleted();
+        this.gamesAbortedValue = StatisticsStorage.getGamesAborted();
+        this.gamesDisqualifiedValue = StatisticsStorage.getGamesDisqualified();
+        this.gamesCheatedValue = StatisticsStorage.getGamesCheated();
     };
     ParticipationTable.prototype.renderPlaytimeCell = function () {
         this.renderCell(playtime_td, ParticipationTable.getFormattedPlaytimeString(this.playtimeInSecondsValue, 1));
@@ -40,8 +48,9 @@ var ParticipationTable = /** @class */ (function () {
         cellElement.innerText = text;
     };
     ParticipationTable.getFormattedPlaytimeString = function (playtimeInSeconds, decimalPlaces) {
-        if (playtimeInSeconds === null || playtimeInSeconds <= 0)
+        if (playtimeInSeconds === null || playtimeInSeconds <= 0) {
             return "0 mins";
+        }
         if (playtimeInSeconds < SECONDS_PER_HOUR) {
             return (playtimeInSeconds / SECONDS_PER_MINUTE).toFixed(decimalPlaces) + " mins";
         }

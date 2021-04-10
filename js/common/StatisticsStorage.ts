@@ -262,7 +262,6 @@ export default class StatisticsStorage {
   public static removeAllItems() {
     const keys = Object.values(this.KEYS);
     keys.forEach((key) => {
-      console.log(key)
       localStorage.removeItem(key);
     });
   }

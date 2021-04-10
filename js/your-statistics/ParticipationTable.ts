@@ -18,11 +18,11 @@ export default class ParticipationTable {
   public readonly tableElement = participationStatistics_table;
   public readonly toggleVisibilityButtonElement = toggleVisibilityParticipationStatistics_button;
 
-  public readonly playtimeInSecondsValue = StatisticsStorage.getPlaytimeInSeconds(1);
-  public readonly gamesCompletedValue = StatisticsStorage.getGamesCompleted();
-  public readonly gamesAbortedValue = StatisticsStorage.getGamesAborted();
-  public readonly gamesDisqualifiedValue = StatisticsStorage.getGamesDisqualified();
-  public readonly gamesCheatedValue = StatisticsStorage.getGamesCheated();
+  private playtimeInSecondsValue: number | null = null;
+  private gamesCompletedValue: number | null = null;
+  private gamesAbortedValue: number | null = null;
+  private gamesDisqualifiedValue: number | null = null;
+  private gamesCheatedValue: number | null = null;
 
   private static readonly instanceCountLimit = 1;
   private static instanceCount = 0;
@@ -35,6 +35,7 @@ export default class ParticipationTable {
   }
 
   public renderAllCells() {
+    this.refreshValues();
     this.renderPlaytimeCell();
     this.renderGamesCompletedCell();
     this.renderGamesAbortedCell();
@@ -42,11 +43,19 @@ export default class ParticipationTable {
     this.renderGamesCheatedCell();
   }
 
+  private refreshValues() {
+    this.playtimeInSecondsValue = StatisticsStorage.getPlaytimeInSeconds(1);
+    this.gamesCompletedValue = StatisticsStorage.getGamesCompleted();
+    this.gamesAbortedValue = StatisticsStorage.getGamesAborted();
+    this.gamesDisqualifiedValue = StatisticsStorage.getGamesDisqualified();
+    this.gamesCheatedValue = StatisticsStorage.getGamesCheated();
+  }
+
   private renderPlaytimeCell() {
     this.renderCell(playtime_td, ParticipationTable.getFormattedPlaytimeString(this.playtimeInSecondsValue, 1));
   }
 
-  private renderCell(cellElement: HTMLTableCellElement, value: number | string) {
+  private renderCell(cellElement: HTMLTableCellElement, value: number | string | null) {
     if (value === null) {
       this.renderNullSymbolForCell(cellElement);
       return;
@@ -62,12 +71,14 @@ export default class ParticipationTable {
     cellElement.innerText = text;
   }
 
-  static getFormattedPlaytimeString(playtimeInSeconds: number, decimalPlaces: number) {
-    if (playtimeInSeconds === null || playtimeInSeconds <= 0) return "0 mins";
-    if (playtimeInSeconds < SECONDS_PER_HOUR) {
-      return (playtimeInSeconds / SECONDS_PER_MINUTE).toFixed(decimalPlaces) + " mins";
+  static getFormattedPlaytimeString(playtimeInSeconds: number | null, decimalPlaces: number) {
+    if (playtimeInSeconds === null || playtimeInSeconds <= 0) {
+      return "0 mins";
     }
-    return (playtimeInSeconds / SECONDS_PER_HOUR).toFixed(decimalPlaces) + " hours";
+    if (playtimeInSeconds < SECONDS_PER_HOUR) {
+      return `${(playtimeInSeconds / SECONDS_PER_MINUTE).toFixed(decimalPlaces)} mins`;
+    }
+    return `${(playtimeInSeconds / SECONDS_PER_HOUR).toFixed(decimalPlaces)} hours`;
   }
 
   private renderGamesCompletedCell() {

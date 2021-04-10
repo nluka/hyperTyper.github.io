@@ -5,20 +5,27 @@ var AccuracyTable = /** @class */ (function () {
     function AccuracyTable() {
         this.tableElement = accuracyStatistics_table;
         this.toggleVisibilityButtonElement = toggleVisibilityAccuracyStatistics_button;
-        this.lastGameValue = StatisticsStorage.getAccuracyLastGameIfExists(1);
-        this.lastTenGamesValue = StatisticsStorage.getAccuracyLastTenGamesIfExists(1);
-        this.averageToDateValue = StatisticsStorage.getAccuracyAverageToDateIfExists(1);
-        this.allTimeBestValue = StatisticsStorage.getAccuracyAllTimeBestIfExists(1);
+        this.lastGameValue = null;
+        this.lastTenGamesValue = null;
+        this.averageToDateValue = null;
+        this.allTimeBestValue = null;
         AccuracyTable.instanceCount++;
         if (AccuracyTable.instanceCount > AccuracyTable.instanceCountLimit) {
             throwExceededClassInstanceLimitException("AccuracyTable", AccuracyTable.instanceCountLimit);
         }
     }
     AccuracyTable.prototype.renderAllCells = function () {
+        this.refreshValues();
         this.renderLastGameCell();
         this.renderLastTenGamesCell();
         this.renderAverageToDateCell();
         this.renderAllTimeBestCell();
+    };
+    AccuracyTable.prototype.refreshValues = function () {
+        this.lastGameValue = StatisticsStorage.getAccuracyLastGameIfExists(1);
+        this.lastTenGamesValue = StatisticsStorage.getAccuracyLastTenGamesIfExists(1);
+        this.averageToDateValue = StatisticsStorage.getAccuracyAverageToDateIfExists(1);
+        this.allTimeBestValue = StatisticsStorage.getAccuracyAllTimeBestIfExists(1);
     };
     AccuracyTable.prototype.renderLastGameCell = function () {
         this.renderCell(accuracyLastGame_td, this.lastGameValue);

@@ -114,9 +114,9 @@ export var toggleVisibilityGameStatisticsTable_button = document.getElementById(
 export var gameStatistics_table = document.getElementById("gameStatisticsTable");
 export var wpmTooltipIcon_div = document.getElementById("wpmTooltipIconDiv");
 export var wpm_td = document.getElementById("wpmTableData");
-export var accuracyTooltipIcon_div = document.getElementById("accuracyTooltipIconDiv");
-export var accuracy_td = document.getElementById("accuracyTableData");
-export var textLength_td = document.getElementById("textLengthCharsTableData");
+export var accuracyTooltipIcon_div = document.getElementById("accuracyPercentageTooltipIconDiv");
+export var accuracy_td = document.getElementById("accuracyPercentageTableData");
+export var textLength_td = document.getElementById("textLengthTableData");
 export var timeElapsed_td = document.getElementById("timeElapsedTableData");
 //#endregion
 //#region mistakeAnalyzer

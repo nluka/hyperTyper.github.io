@@ -69,12 +69,6 @@ function addButtonClickEventListenersForAllElementVisibilityTogglers() {
   );
 }
 
-function refreshAllTables() {
-  wpmTable.renderAllCells();
-  accuracyTable.renderAllCells();
-  participationTable.renderAllCells();
-}
-
 function clearStatisticsButtonClickEventHandler() {
   const didUserPressOk = confirm(
     "Are you sure you want to clear your statistics?\n" +
@@ -84,7 +78,13 @@ function clearStatisticsButtonClickEventHandler() {
     return;
   }
   StatisticsStorage.removeAllItems();
-  refreshAllTables();
+  setTimeout(refreshAllTables, 250);
+}
+
+function refreshAllTables() {
+  wpmTable.renderAllCells();
+  accuracyTable.renderAllCells();
+  participationTable.renderAllCells();
 }
 
 main();

@@ -16,10 +16,10 @@ export default class WpmTable {
   public readonly tableElement = wpmStatistics_table;
   public readonly toggleVisibilityButtonElement = toggleVisibilityWpmStatistics_button;
 
-  private readonly lastGameValue = StatisticsStorage.getWpmLastGameIfExists(1);
-  private readonly lastTenGamesValue = StatisticsStorage.getWpmLastTenGamesIfExists(1);
-  private readonly averageToDateValue = StatisticsStorage.getWpmAverageToDateIfExists(1);
-  private readonly allTimeBestValue = StatisticsStorage.getWpmAllTimeBestIfExists(1);
+  private lastGameValue: number | null = null;
+  private lastTenGamesValue: number | null = null;
+  private averageToDateValue: number | null = null;
+  private allTimeBestValue: number | null = null;
 
   private static readonly instanceCountLimit = 1;
   private static instanceCount = 0;
@@ -32,10 +32,18 @@ export default class WpmTable {
   }
 
   public renderAllCells() {
+    this.refreshValues();
     this.renderLastGameCell();
     this.renderLastTenGamesCell();
     this.renderAverageToDateCell();
     this.renderAllTimeBestCell();
+  }
+
+  private refreshValues() {
+    this.lastGameValue = StatisticsStorage.getWpmLastGameIfExists(1);
+    this.lastTenGamesValue = StatisticsStorage.getWpmLastTenGamesIfExists(1);
+    this.averageToDateValue = StatisticsStorage.getWpmAverageToDateIfExists(1);
+    this.allTimeBestValue = StatisticsStorage.getWpmAllTimeBestIfExists(1);
   }
 
   private renderLastGameCell() {
