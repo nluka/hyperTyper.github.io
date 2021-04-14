@@ -35,67 +35,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { CHARACTERS_PER_WORD, SECONDS_PER_MINUTE, phraseItemCollectionNameToArrayMap } from "./constants.js";
-export function parseBool(value) {
-    if (typeof value === "boolean") {
-        return value;
-    }
-    if (value === null || value === undefined) {
-        return false;
-    }
-    if (typeof value === "object") {
-        return !isObjectEmpty(value);
-    }
-    switch (value.toLowerCase()) {
-        case "true":
-            return true;
-        case "false":
+// Note: functions are sorted in alphabetical order
+export function areArraysEqual(array1, array2) {
+    array1.sort();
+    array2.sort();
+    for (var i = 0; i < array1.length; i++) {
+        if (array1[i] !== array2[i]) {
             return false;
-        default:
-            tryToLogErrorStack();
-            throw "\"" + value + "\" cannot be converted to a bool";
+        }
     }
+    return true;
 }
-export function roundFloat(float, decimalPlaces) {
-    return parseFloat(float.toFixed(decimalPlaces));
+export function calculateAccuracyPercentage(textLength, charactersTypedCount, mistakeCount) {
+    var fractionalAccuracy = textLength / (charactersTypedCount + mistakeCount);
+    return fractionalAccuracy * 100;
 }
-export function getRandomElementFromArray(array) {
-    return array[Math.floor(Math.random() * array.length)];
+export function calculateNetWordsPerMinute(textLength, secondsElapsed) {
+    var words = textLength / CHARACTERS_PER_WORD;
+    var minutes = secondsElapsed / SECONDS_PER_MINUTE;
+    return words / minutes;
 }
-export function probabilityToReturnTrue(floatFromZeroToOne) {
-    return Math.random() < floatFromZeroToOne;
+export function convertItemCollectionArrayToItemCollectionNameArray(itemCollectionArray) {
+    var itemCollectionNames = [];
+    itemCollectionArray.forEach(function (itemCollection) {
+        var itemCollectionName = getKeyFromObjectByValue(phraseItemCollectionNameToArrayMap, itemCollection);
+        if (itemCollectionName !== null && itemCollectionName !== undefined) {
+            itemCollectionNames.push(itemCollectionName);
+        }
+    });
+    return itemCollectionNames;
 }
-export function isObjectEmpty(object) {
-    return Object.keys(object).length === 0;
-}
-export function throwExceededClassInstanceLimitException(className, instanceLimit) {
-    throw "exceeded \"" + className + "\" class instance limit of \"" + instanceLimit + "\"";
-}
-export function verifyNumberIsInRange(number, min, max) {
-    if (number < min || number > max) {
-        tryToLogErrorStack();
-        throw "number '" + number + "' is not in range " + min + "-" + max;
-    }
-}
-export function tryToLogErrorStack() {
-    try {
-        console.log(new Error().stack);
-    }
-    catch (error) {
-        console.log("couldn't log 'new Error().stack':", error);
-    }
-}
-export function getValueFromObjectByKey(object, key) {
-    var valueIndex = Object.keys(object).indexOf(key);
-    var value = Object.values(object)[valueIndex];
-    return value;
-}
-export function getKeyFromObjectByValue(object, value) {
-    var keyIndex = Object.values(object).indexOf(value);
-    if (keyIndex === -1) {
-        return null;
-    }
-    var key = Object.keys(object)[keyIndex];
-    return key;
+export function convertItemCollectionNameArrayToItemCollectionArray(itemCollectionNameArray) {
+    var itemCollections = [];
+    itemCollectionNameArray.forEach(function (itemCollectionName) {
+        var itemCollection = getValueFromObjectByKey(phraseItemCollectionNameToArrayMap, itemCollectionName);
+        itemCollections.push(itemCollection);
+    });
+    return itemCollections;
 }
 export function getFetch(baseUrl, params) {
     if (params === void 0) { params = {}; }
@@ -117,6 +93,17 @@ export function getFetch(baseUrl, params) {
         });
     });
 }
+export function getKeyFromObjectByValue(object, value) {
+    var keyIndex = Object.values(object).indexOf(value);
+    if (keyIndex === -1) {
+        return null;
+    }
+    var key = Object.keys(object)[keyIndex];
+    return key;
+}
+export function getRandomElementFromArray(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
 export function getUrlWithAppendedQueries(baseUrl, params) {
     if (params === void 0) { params = {}; }
     if (isObjectEmpty(params)) {
@@ -130,15 +117,10 @@ export function getUrlWithAppendedQueries(baseUrl, params) {
     var urlWithAppendedQueries = baseUrl + "?" + queryString;
     return urlWithAppendedQueries;
 }
-export var sleepMs = function (milliseconds) { return new Promise(function (resolve) { return setTimeout(resolve, milliseconds); }); };
-export function calculateNetWordsPerMinute(textLength, secondsElapsed) {
-    var words = textLength / CHARACTERS_PER_WORD;
-    var minutes = secondsElapsed / SECONDS_PER_MINUTE;
-    return words / minutes;
-}
-export function calculateAccuracyPercentage(textLength, charactersTypedCount, mistakeCount) {
-    var fractionalAccuracy = textLength / (charactersTypedCount + mistakeCount);
-    return fractionalAccuracy * 100;
+export function getValueFromObjectByKey(object, key) {
+    var valueIndex = Object.keys(object).indexOf(key);
+    var value = Object.values(object)[valueIndex];
+    return value;
 }
 export function handleInternetExplorer() {
     if (!isBrowserInternetExplorer()) {
@@ -156,31 +138,50 @@ export function isBrowserInternetExplorer() {
     // MSIE used to detect old browsers and Trident used to detect newer ones
     return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1;
 }
-export function convertItemCollectionArrayToItemCollectionNameArray(itemCollectionArray) {
-    var itemCollectionNames = [];
-    itemCollectionArray.forEach(function (itemCollection) {
-        var itemCollectionName = getKeyFromObjectByValue(phraseItemCollectionNameToArrayMap, itemCollection);
-        if (itemCollectionName !== null && itemCollectionName !== undefined) {
-            itemCollectionNames.push(itemCollectionName);
-        }
-    });
-    return itemCollectionNames;
+export function isObjectEmpty(object) {
+    return Object.keys(object).length === 0;
 }
-export function convertItemCollectionNameArrayToItemCollectionArray(itemCollectionNameArray) {
-    var itemCollections = [];
-    itemCollectionNameArray.forEach(function (itemCollectionName) {
-        var itemCollection = getValueFromObjectByKey(phraseItemCollectionNameToArrayMap, itemCollectionName);
-        itemCollections.push(itemCollection);
-    });
-    return itemCollections;
-}
-export function areArraysEqual(array1, array2) {
-    array1.sort();
-    array2.sort();
-    for (var i = 0; i < array1.length; i++) {
-        if (array1[i] !== array2[i]) {
-            return false;
-        }
+export function parseBool(value) {
+    if (typeof value === "boolean") {
+        return value;
     }
-    return true;
+    if (value === null || value === undefined) {
+        return false;
+    }
+    if (typeof value === "object") {
+        return !isObjectEmpty(value);
+    }
+    switch (value.toLowerCase()) {
+        case "true":
+            return true;
+        case "false":
+            return false;
+        default:
+            tryToLogErrorStack();
+            throw "\"" + value + "\" cannot be converted to a bool";
+    }
+}
+export function probabilityToReturnTrue(floatFromZeroToOne) {
+    return Math.random() < floatFromZeroToOne;
+}
+export function roundFloat(float, decimalPlaces) {
+    return parseFloat(float.toFixed(decimalPlaces));
+}
+export var sleepMs = function (milliseconds) { return new Promise(function (resolve) { return setTimeout(resolve, milliseconds); }); };
+export function throwExceededClassInstanceLimitException(className, instanceLimit) {
+    throw "exceeded \"" + className + "\" class instance limit of \"" + instanceLimit + "\"";
+}
+export function tryToLogErrorStack() {
+    try {
+        console.log(new Error().stack);
+    }
+    catch (error) {
+        console.log("couldn't log 'new Error().stack':", error);
+    }
+}
+export function verifyNumberIsInRange(number, min, max) {
+    if (number < min || number > max) {
+        tryToLogErrorStack();
+        throw "number '" + number + "' is not in range " + min + "-" + max;
+    }
 }

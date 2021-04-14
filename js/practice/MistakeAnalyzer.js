@@ -25,22 +25,7 @@ var MistakeAnalyzer = /** @class */ (function () {
         var previousMapValue = this.map.get(index);
         previousMapValue.incrementMistakeCount();
         previousMapValue.addIncorrectInput(incorrectInput);
-        // const previousMistakeCount = previousMapValue?.getMistakeCount();
-        // const newMistakeCount = previousMistakeCount + 1;
-        // const previousIncorrectCharacters = previousMapValue.incorrectInputs;
-        // let newIncorrectCharacters = previousIncorrectCharacters;
-        // newIncorrectCharacters.push(incorrectInput);
-        // this.set(index, newMistakeCount, newIncorrectCharacters);
     };
-    // set(index: number, mistakeCount: number, incorrectInputs: string[]) {
-    //   this.map.set(
-    //     index,
-    //     {
-    //       mistakeCount: mistakeCount,
-    //       incorrectInputs: incorrectInputs
-    //     }
-    //   );
-    // }
     MistakeAnalyzer.prototype.render = function (gameTextContent, mistakeCount) {
         var _this = this;
         if (mistakeCount === 0) {

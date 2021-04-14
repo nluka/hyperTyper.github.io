@@ -94,3 +94,7 @@
 - Made some changes to html text content
 - Fixed TS code for Net WPM, Accuracy %, and Participation tables
 - Fixed clear statistics button
+
+3.0.2:
+- Formatting, organization, and small identifier improvements for some TS files
+- Fixed game timer, now displays times beyond a minute correctly

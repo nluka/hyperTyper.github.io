@@ -59,7 +59,6 @@ import {
   altRightKey_div,
   controlRightKey_div,
 } from "./page-elements.js";
-
 import { gameInput, settings } from "./main.js";
 import { getValueFromObjectByKey, parseBool, throwExceededClassInstanceLimitException } from "../common/functions.js";
 

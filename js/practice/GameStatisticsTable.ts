@@ -6,7 +6,6 @@ import {
   textLength_td,
   timeElapsed_td
 } from "./page-elements.js";
-
 import GameResult from "./GameResult";
 import { throwExceededClassInstanceLimitException } from "../common/functions.js";
 

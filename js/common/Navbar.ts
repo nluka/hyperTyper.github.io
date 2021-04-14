@@ -1,5 +1,12 @@
-import { navbarItems_ul, expandNavbarItemsList_button, expandNavbarItemsListButtonStrips_spans } from "./page-elements.js";
-import { parseBool, throwExceededClassInstanceLimitException } from './functions.js';
+import {
+  navbarItems_ul,
+  expandNavbarItemsList_button,
+  expandNavbarItemsListButtonStrips_spans
+} from "./page-elements.js";
+import {
+  parseBool,
+  throwExceededClassInstanceLimitException
+} from './functions.js';
 
 export default class Navbar {
   private itemListElement = navbarItems_ul;

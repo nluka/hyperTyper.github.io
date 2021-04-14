@@ -1,7 +1,6 @@
 var StringEditor = /** @class */ (function () {
     function StringEditor() {
     }
-    //public static readonly PUNCTUATION_CHARACTERS = [".", "?", "!", ",", ":", ";"];
     StringEditor.getWithNoPunctuation = function (string) {
         string = this.getPurelyAlphaNumericLowerCaseEquivalent(string);
         string = this.getWithTrailingWhitespaceRemoved(string);

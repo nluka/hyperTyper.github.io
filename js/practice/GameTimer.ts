@@ -1,4 +1,4 @@
-import { MILLISECONDS_PER_HOUR, MILLISECONDS_PER_MINUTE, MILLISECONDS_PER_SECOND } from "../common/constants.js";
+import { MILLISECONDS_PER_SECOND, SECONDS_PER_HOUR, SECONDS_PER_MINUTE } from "../common/constants.js";
 import { sleepMs, throwExceededClassInstanceLimitException } from "../common/functions.js";
 import { gameTimer_div } from "./page-elements.js";
 import Sound from "./Sound.js";
@@ -6,8 +6,8 @@ import Sound from "./Sound.js";
 export default class GameTimer {
   public static readonly INACTIVE_STATE_TEXT = "--:--";
 
-  private element = gameTimer_div;
-  private intervalId: number | null = null;
+  private readonly element = gameTimer_div;
+  private intervalId: ReturnType<typeof setTimeout> | null = null;
   private startDate: Date | null = null;
   private stopDate: Date | null = null;
   private timeElapsedInSeconds: number | null = null;
@@ -22,7 +22,7 @@ export default class GameTimer {
     }
   }
 
-  public async countDownFromMs(milliseconds: number) {
+  public async countDownMs(milliseconds: number) {
     for (let secondsRemaining = milliseconds / MILLISECONDS_PER_SECOND; secondsRemaining >= 0; secondsRemaining--) {
       if (secondsRemaining > 0) {
         this.countdownTick(secondsRemaining);
@@ -114,31 +114,15 @@ export default class GameTimer {
     this.startDate = new Date();
     this.intervalId = setInterval(() => {
       this.updateInnerText();
-    }, MILLISECONDS_PER_SECOND);
+    }, MILLISECONDS_PER_SECOND / 10);
   }
 
   private updateInnerText() {
-    const hoursElapsedFloored = Math.floor(this.getHoursElapsedSinceStartDate());
-    const minutesElapsedFloored = Math.floor(this.getMinutesElapsedSinceStartDate());
     const secondsElapsedFloored = Math.floor(this.getSecondsElapsedSinceStartDate());
 
     this.setInnerText(
-      this.getFormattedTimeString(hoursElapsedFloored, minutesElapsedFloored, secondsElapsedFloored)
+      this.getFormattedTimeString(secondsElapsedFloored)
     );
-  }
-
-  public getHoursElapsedSinceStartDate() {
-    if (this.startDate !== null && this.startDate !== undefined) {
-      return (new Date().getTime() - this.startDate.getTime()) / MILLISECONDS_PER_HOUR;
-    }
-    throw "this.startDate is null or undefined";
-  }
-
-  public getMinutesElapsedSinceStartDate() {
-    if (this.startDate !== null && this.startDate !== undefined) {
-      return (new Date().getTime() - this.startDate.getTime()) / MILLISECONDS_PER_MINUTE;
-    }
-    throw "this.startDate is null or undefined";
   }
 
   public getSecondsElapsedSinceStartDate() {
@@ -148,20 +132,32 @@ export default class GameTimer {
     throw "this.startDate is null or undefined";
   }
 
-  private getFormattedTimeString(hours: number, minutes: number, seconds: number) {
-    let string = "";
+  private getFormattedTimeString(seconds: number) {
+    let timeString = "";
+    let hours = 0;
+    let minutes = 0;
+
+    while (seconds >= SECONDS_PER_HOUR) {
+      hours++;
+      seconds -= SECONDS_PER_HOUR;
+    }
+    while (seconds >= SECONDS_PER_MINUTE) {
+      minutes++;
+      seconds -= SECONDS_PER_MINUTE;
+    }
+
     if (hours > 0) {
-      string = `${hours}:`;
+      timeString = `${hours}:`;
       if (minutes < 10) {
-        string += "0"; // to have h:mm:ss instead of h:m:ss
+        timeString += "0"; // to have h:mm:ss instead of h:m:ss
       }
     }
-    string += `${minutes}:`;
-    if (seconds < 10.0) {
-      string += "0"; // to have mm:ss instead of mm:s
+    timeString += `${minutes}:`;
+    if (seconds < 10) {
+      timeString += "0"; // to have mm:ss instead of mm:s
     }
-    string += seconds;
-    return string;
+    timeString += seconds;
+    return timeString;
   }
 
   public stop() {

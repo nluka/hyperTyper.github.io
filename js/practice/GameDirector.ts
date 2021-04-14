@@ -57,7 +57,7 @@ export default class GameDirector {
       return;
     }
     if (settings.getCountdown()) {
-      await gameTimer.countDownFromMs(3000);
+      await gameTimer.countDownMs(3000);
     }
     GameDirector.startGame();
   }

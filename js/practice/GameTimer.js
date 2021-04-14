@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { MILLISECONDS_PER_HOUR, MILLISECONDS_PER_MINUTE, MILLISECONDS_PER_SECOND } from "../common/constants.js";
+import { MILLISECONDS_PER_SECOND, SECONDS_PER_HOUR, SECONDS_PER_MINUTE } from "../common/constants.js";
 import { sleepMs, throwExceededClassInstanceLimitException } from "../common/functions.js";
 import { gameTimer_div } from "./page-elements.js";
 import Sound from "./Sound.js";
@@ -50,7 +50,7 @@ var GameTimer = /** @class */ (function () {
             throwExceededClassInstanceLimitException("GameTimer", GameTimer.instanceCountLimit);
         }
     }
-    GameTimer.prototype.countDownFromMs = function (milliseconds) {
+    GameTimer.prototype.countDownMs = function (milliseconds) {
         return __awaiter(this, void 0, void 0, function () {
             var secondsRemaining;
             return __generator(this, function (_a) {
@@ -147,25 +147,11 @@ var GameTimer = /** @class */ (function () {
         this.startDate = new Date();
         this.intervalId = setInterval(function () {
             _this.updateInnerText();
-        }, MILLISECONDS_PER_SECOND);
+        }, MILLISECONDS_PER_SECOND / 10);
     };
     GameTimer.prototype.updateInnerText = function () {
-        var hoursElapsedFloored = Math.floor(this.getHoursElapsedSinceStartDate());
-        var minutesElapsedFloored = Math.floor(this.getMinutesElapsedSinceStartDate());
         var secondsElapsedFloored = Math.floor(this.getSecondsElapsedSinceStartDate());
-        this.setInnerText(this.getFormattedTimeString(hoursElapsedFloored, minutesElapsedFloored, secondsElapsedFloored));
-    };
-    GameTimer.prototype.getHoursElapsedSinceStartDate = function () {
-        if (this.startDate !== null && this.startDate !== undefined) {
-            return (new Date().getTime() - this.startDate.getTime()) / MILLISECONDS_PER_HOUR;
-        }
-        throw "this.startDate is null or undefined";
-    };
-    GameTimer.prototype.getMinutesElapsedSinceStartDate = function () {
-        if (this.startDate !== null && this.startDate !== undefined) {
-            return (new Date().getTime() - this.startDate.getTime()) / MILLISECONDS_PER_MINUTE;
-        }
-        throw "this.startDate is null or undefined";
+        this.setInnerText(this.getFormattedTimeString(secondsElapsedFloored));
     };
     GameTimer.prototype.getSecondsElapsedSinceStartDate = function () {
         if (this.startDate !== null && this.startDate !== undefined) {
@@ -173,20 +159,30 @@ var GameTimer = /** @class */ (function () {
         }
         throw "this.startDate is null or undefined";
     };
-    GameTimer.prototype.getFormattedTimeString = function (hours, minutes, seconds) {
-        var string = "";
+    GameTimer.prototype.getFormattedTimeString = function (seconds) {
+        var timeString = "";
+        var hours = 0;
+        var minutes = 0;
+        while (seconds >= SECONDS_PER_HOUR) {
+            hours++;
+            seconds -= SECONDS_PER_HOUR;
+        }
+        while (seconds >= SECONDS_PER_MINUTE) {
+            minutes++;
+            seconds -= SECONDS_PER_MINUTE;
+        }
         if (hours > 0) {
-            string = hours + ":";
+            timeString = hours + ":";
             if (minutes < 10) {
-                string += "0"; // to have h:mm:ss instead of h:m:ss
+                timeString += "0"; // to have h:mm:ss instead of h:m:ss
             }
         }
-        string += minutes + ":";
-        if (seconds < 10.0) {
-            string += "0"; // to have mm:ss instead of mm:s
+        timeString += minutes + ":";
+        if (seconds < 10) {
+            timeString += "0"; // to have mm:ss instead of mm:s
         }
-        string += seconds;
-        return string;
+        timeString += seconds;
+        return timeString;
     };
     GameTimer.prototype.stop = function () {
         if (this.intervalId === null || this.startDate === null) {

@@ -83,7 +83,7 @@ var GameDirector = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         if (!settings.getCountdown()) return [3 /*break*/, 3];
-                        return [4 /*yield*/, gameTimer.countDownFromMs(3000)];
+                        return [4 /*yield*/, gameTimer.countDownMs(3000)];
                     case 2:
                         _a.sent();
                         _a.label = 3;

@@ -37,23 +37,7 @@ export default class MistakeAnalyzer {
     const previousMapValue = this.map.get(index) as CharacterAnalysis;
     previousMapValue.incrementMistakeCount();
     previousMapValue.addIncorrectInput(incorrectInput);
-    // const previousMistakeCount = previousMapValue?.getMistakeCount();
-    // const newMistakeCount = previousMistakeCount + 1;
-    // const previousIncorrectCharacters = previousMapValue.incorrectInputs;
-    // let newIncorrectCharacters = previousIncorrectCharacters;
-    // newIncorrectCharacters.push(incorrectInput);
-    // this.set(index, newMistakeCount, newIncorrectCharacters);
   }
-
-  // set(index: number, mistakeCount: number, incorrectInputs: string[]) {
-  //   this.map.set(
-  //     index,
-  //     {
-  //       mistakeCount: mistakeCount,
-  //       incorrectInputs: incorrectInputs
-  //     }
-  //   );
-  // }
 
   public render(gameTextContent: string, mistakeCount: number) {
     if (mistakeCount === 0) {

@@ -1,6 +1,4 @@
 export default class StringEditor {
-  //public static readonly PUNCTUATION_CHARACTERS = [".", "?", "!", ",", ":", ";"];
-
   public static getWithNoPunctuation(string: string) {
     string = this.getPurelyAlphaNumericLowerCaseEquivalent(string);
     string = this.getWithTrailingWhitespaceRemoved(string);
