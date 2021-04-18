@@ -98,3 +98,6 @@
 3.0.2:
 - Formatting, organization, and small identifier improvements for some TS files
 - Fixed game timer, now displays times beyond a minute correctly
+
+3.0.3:
+- Fixed title for index.html
